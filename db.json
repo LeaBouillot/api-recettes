@@ -1,5 +1,4 @@
-{
-    "recipes": [
+[
       {
         "id": 1,
         "title": "Pasta Bolognese",
@@ -494,5 +493,3 @@
         ]
       }
     ]
-  }
-  

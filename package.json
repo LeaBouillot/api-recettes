@@ -11,15 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.19.2",
-    "json-server": "^1.0.0-beta.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LeaBouillot/api-recettes.git"
-  },
-  "bugs": {
-    "url": "https://github.com/LeaBouillot/api-recettes/issues"
-  },
-  "homepage": "https://github.com/LeaBouillot/api-recettes#readme"
+    "express": "^4.19.2"
+  }
 }

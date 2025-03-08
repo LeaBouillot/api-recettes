@@ -5,10 +5,11 @@ const middlewares = jsonServer.defaults();
 
 // Définir la racine de l'API
 server.use(jsonServer.rewriter({
-  '/api/*': '/$1',
-  '/recipes/all': '/recipes',
-  '/recipes/:category': '/recipes?category=:category'
-}));
+    '/api/*': '/$1',
+    '/recipes/all': '/recipes',
+    '/recipes/:category': '/recipes?category=:category',
+    '/recipes': '/recipes' // This line is added to fix the issue
+  }));
 
 // Configurer CORS pour permettre les requêtes de n'importe quel domaine
 server.use((req, res, next) => {

@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Configuration de CORS pour autoriser plusieurs origines
-const allowedOrigins = ['http://localhost:5173', 'https://recipify-mu.vercel.app'];
+const allowedOrigins = ['http://localhost:5173', 'https://recette-app-theta.vercel.app'];
 app.use(cors({
     origin: function (origin, callback) {
         // Autoriser les requêtes sans origine (comme les requêtes internes)

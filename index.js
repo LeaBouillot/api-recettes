@@ -1,27 +1,36 @@
-const jsonServer = require('json-server');
+const jsonServer = require("json-server");
 const server = jsonServer.create();
-const router = jsonServer.router('db.json');
+const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
 
 // Définir la racine de l'API
-server.use(jsonServer.rewriter({
-    '/api/*': '/$1',
-    '/recipes/all': '/recipes',
-    '/recipes/:category': '/recipes?category=:category',
-    '/recipes': '/recipes' // This line is added to fix the issue
-  }));
+server.use(
+  jsonServer.rewriter({
+    "/": "/api",
+    "/api/*": "/$1",
+    "/recipes": "/recipes",
+    "/recipes/all": "/recipes",
+    "/recipes/:category": "/recipes?category=:category",
+  })
+);
 
 // Configurer CORS pour permettre les requêtes de n'importe quel domaine
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-  
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+  );
+
   // Gérer les requêtes OPTIONS préliminaires
-  if (req.method === 'OPTIONS') {
+  if (req.method === "OPTIONS") {
     return res.sendStatus(200);
   }
-  
+
   next();
 });
 
@@ -33,7 +42,7 @@ server.use(jsonServer.bodyParser);
 
 // Ajouter un middleware personnalisé avant le routeur
 server.use((req, res, next) => {
-  if (req.method === 'POST') {
+  if (req.method === "POST") {
     // Pour les nouvelles recettes, générer un ID si non fourni
     req.body.createdAt = Date.now();
   }

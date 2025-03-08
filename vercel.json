@@ -1,4 +1,4 @@
-{
+// {
     "version": 2,
     "builds": [
         {
@@ -7,6 +7,14 @@
         }
     ],
     "routes": [
+        {
+            "src": "/recipes",
+            "dest": "index.js"
+        },
+        {
+            "src": "/api/(.*)",
+            "dest": "index.js"
+        },
         {
             "src": "/(.*)",
             "dest": "index.js"
